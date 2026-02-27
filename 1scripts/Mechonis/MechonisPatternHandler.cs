@@ -9,15 +9,18 @@ public class MechonisPatternHandler
 
     public MechonisPatternHandler(Mechonis mechonis)
     {
-        var shooting = new MechonisShoot(mechonis, 2500);
-        var resting = new MechonisRest(mechonis, 700);
-        var slashing = new MechonisSlash(mechonis, 400);
+        var shootingLots = new MechonisShoot(mechonis, 2500);
+        var smallSlash = new MechonisSlash(mechonis, 300);
+        var shootingBig = new MechonisShoot(mechonis, 2500, bulletSizeMul: 3, cooldownMs: 400);
+        var longSlash = new MechonisSlash(mechonis, 1200);
+        //var resting = new MechonisRest(mechonis, 700);
 
-        shooting.Next = resting;
-        resting.Next = slashing;
-        slashing.Next = shooting;
+        shootingLots.Next = smallSlash;
+        smallSlash.Next = shootingBig;
+        shootingBig.Next = longSlash;
+        longSlash.Next = shootingLots;
 
-        _currentState = shooting;
+        _currentState = shootingLots;
 
         _stateSwitchTimestamp = Time.GetTicksMsec();
     }

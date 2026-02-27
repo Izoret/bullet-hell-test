@@ -32,7 +32,7 @@ public partial class EnemyBullet : Node2D
         QueueFree();
     }
 
-    public static void SpawnOne(Vector2 from, Vector2 towards)
+    public static void SpawnOne(Vector2 from, Vector2 towards, float sizeMultiplier = 1)
     {
         if (BulletScene.Instantiate() is not EnemyBullet newBullet) return;
         Manager.I.EnemyBullets.AddChild(newBullet);
@@ -40,5 +40,6 @@ public partial class EnemyBullet : Node2D
         newBullet.Position = from;
         newBullet._direction = towards.Normalized();
         newBullet._timeWhenSpawned = Time.GetTicksMsec();
+        newBullet.Scale *= new Vector2(sizeMultiplier, sizeMultiplier);
     }
 }

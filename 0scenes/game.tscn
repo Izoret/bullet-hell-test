@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://fu1amsumtj2d" path="res://0scenes/player.tscn" id="1_731xg"]
 [ext_resource type="Texture2D" uid="uid://dlp536optkalk" path="res://2sprites/wallpaper.png" id="2_ggl4w"]
 [ext_resource type="PackedScene" uid="uid://dmqc7vlpx8sn1" path="res://0scenes/mechonis.tscn" id="4_8bds8"]
+[ext_resource type="Script" uid="uid://bw7yqujtuqdhu" path="res://1scripts/Camera.cs" id="5_xfhdr"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_731xg"]
 
@@ -22,40 +23,46 @@ PlayerBullets = NodePath("Bullets/PlayerBullets")
 EnemyBullets = NodePath("Bullets/EnemyBullets")
 
 [node name="Player" parent="." unique_id=1846487842 instance=ExtResource("1_731xg")]
-position = Vector2(427, 402)
+position = Vector2(-240, 200)
 scale = Vector2(0.3, 0.3)
 
 [node name="Bounds" type="StaticBody2D" parent="." unique_id=86372304]
+position = Vector2(1, 0)
 collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=635122534]
-position = Vector2(596, 650)
+position = Vector2(0, 323)
 shape = SubResource("WorldBoundaryShape2D_731xg")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds" unique_id=278377943]
-position = Vector2(1, 241)
+position = Vector2(-573, 0)
 shape = SubResource("WorldBoundaryShape2D_ggl4w")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds" unique_id=1192590343]
-position = Vector2(1154, 324)
+position = Vector2(573, 0)
 shape = SubResource("WorldBoundaryShape2D_tq0pn")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds" unique_id=1484439135]
-position = Vector2(573, 0)
+position = Vector2(0, -314)
 shape = SubResource("WorldBoundaryShape2D_8bds8")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=487633879]
 z_index = -50
-position = Vector2(573, 325)
 scale = Vector2(0.6105566, 0.6105566)
 texture = ExtResource("2_ggl4w")
 
 [node name="Mechonis" parent="." unique_id=1330301748 instance=ExtResource("4_8bds8")]
-position = Vector2(580.99994, 98.999985)
+position = Vector2(-0.99993896, -232.99995)
 scale = Vector2(0.17, 0.17)
 
-[node name="Bullets" type="Node" parent="." unique_id=1219239332]
+[node name="Bullets" type="Node" parent="." unique_id=1386017620]
 
-[node name="PlayerBullets" type="Node2D" parent="Bullets" unique_id=1472892692]
+[node name="PlayerBullets" type="Node" parent="Bullets" unique_id=81171042]
 
-[node name="EnemyBullets" type="Node2D" parent="Bullets" unique_id=1062556951]
+[node name="EnemyBullets" type="Node" parent="Bullets" unique_id=1475356517]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=842311343]
+script = ExtResource("5_xfhdr")
+NoiseShakeSpeed = 60.0
+NoiseShakeStrength = 17.0
+ShakeDecayRate = 8.0

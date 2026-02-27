@@ -31,7 +31,7 @@ public partial class Player : CharacterBody2D
 
     public void GetHit()
     {
-        GD.Print("i got hit!!");
+        Camera.I.ApplyNoiseShake();
         _hp--;
         if (_hp <= 0) Die();
     }

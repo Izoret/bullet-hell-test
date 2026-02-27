@@ -4,8 +4,8 @@ namespace Shooter;
 
 public partial class Manager : Node2D
 {
-	[Export] public Node2D PlayerBullets;
-	[Export] public Node2D EnemyBullets;
+	[Export] public Node PlayerBullets;
+	[Export] public Node EnemyBullets;
 
 	public static Manager I;
 	public override void _Ready()

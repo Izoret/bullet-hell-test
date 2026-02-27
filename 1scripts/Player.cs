@@ -23,7 +23,7 @@ public partial class Player : CharacterBody2D
     {
         MoveAndSlide();
     }
-    
+
     public static void SetDirection(Vector2 dir)
     {
         I.Velocity = dir * I.Speed;
@@ -32,7 +32,7 @@ public partial class Player : CharacterBody2D
 
     public static void Hit(int damage)
     {
-        Camera.I.ApplyNoiseShake();
+        Camera.I.ApplyNoiseShake(damage > 1000 ? 2 : 1);
         I._hp -= damage;
         UI.UpdateHealthLabel(I._hp);
         if (I._hp <= 0) I.Die();
@@ -41,5 +41,6 @@ public partial class Player : CharacterBody2D
     private void Die()
     {
         GD.Print("arglas est mort.....");
+        GetTree().Quit();
     }
 }

@@ -11,7 +11,7 @@ public class MechonisPatternHandler
     {
         var shooting = new MechonisShoot(mechonis, 2500);
         var resting = new MechonisRest(mechonis, 700);
-        var slashing = new MechonisSlash(mechonis, 1000);
+        var slashing = new MechonisSlash(mechonis, 400);
 
         shooting.Next = resting;
         resting.Next = slashing;

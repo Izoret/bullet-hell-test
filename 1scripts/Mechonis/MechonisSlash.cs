@@ -4,6 +4,6 @@ public class MechonisSlash(Mechonis mechonis, float duration) : MechonisPattern(
 {
     public override void Trigger()
     {
-        Mechonis.Sword.Rotate(-0.1f);
+        Mechonis.Sword.Rotate(-0.01f * Mechonis.Sword.SwingSpeed);
     }
 }

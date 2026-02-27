@@ -4,7 +4,7 @@ namespace Shooter.Mechonis;
 
 public partial class Mechonis : Area2D
 {
-    [Export] public Node2D Sword;
+    [Export] public MechonisSword Sword;
 
     [Export] private float _maxHealth = 100f;
     private float _currentHealth;
@@ -28,11 +28,6 @@ public partial class Mechonis : Area2D
         // physics layers only detect player bullets
 
         LoseHealth();
-    }
-
-    private void OnPlayerEnteredSword(Node2D other)
-    {
-        GD.Print("OUCH");
     }
 
     private void LoseHealth()

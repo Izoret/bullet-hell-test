@@ -26,9 +26,9 @@ public partial class Camera : Camera2D
         _noise.Frequency = 0.5f;
     }
 
-    public void ApplyNoiseShake()
+    public void ApplyNoiseShake(float multiplier = 1)
     {
-        _shakeStrength = NoiseShakeStrength;
+        _shakeStrength = NoiseShakeStrength * multiplier;
     }
 
     public override void _Process(double delta)

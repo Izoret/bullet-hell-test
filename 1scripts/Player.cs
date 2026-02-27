@@ -5,21 +5,39 @@ namespace Shooter;
 
 public partial class Player : CharacterBody2D
 {
-	[Export] public float Speed = 600;
+    [Export] public float Speed = 600;
 
-	public static Player I;
-	public override void _Ready()
-	{
-		I = this;
-	}
+    [Export] public int MaxHp = 5;
+    private int _hp;
 
-	public void SetDirection(Vector2 dir)
-	{
-		Velocity = dir * Speed;
-	}
+    public static Player I;
 
-	public override void _PhysicsProcess(double delta)
-	{
-		MoveAndSlide();
-	}
+    public override void _Ready()
+    {
+        I = this;
+
+        _hp = MaxHp;
+    }
+
+    public void SetDirection(Vector2 dir)
+    {
+        Velocity = dir * Speed;
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        MoveAndSlide();
+    }
+
+    public void GetHit()
+    {
+        GD.Print("i got hit!!");
+        _hp--;
+        if (_hp <= 0) Die();
+    }
+
+    private void Die()
+    {
+        GD.Print("arglas est mort.....");
+    }
 }

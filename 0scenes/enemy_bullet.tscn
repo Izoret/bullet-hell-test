@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://1bnhxkkrylly"]
+
+[ext_resource type="Script" uid="uid://6iaqk07ovwi6" path="res://1scripts/EnemyBullet.cs" id="1_0ucbb"]
+[ext_resource type="Texture2D" uid="uid://cdvkvd5apa608" path="res://2sprites/gear.png" id="2_0ucbb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ix26s"]
+radius = 163.93
+
+[node name="EnemyBullet" type="Node2D" unique_id=844280356]
+scale = Vector2(0.1, 0.1)
+script = ExtResource("1_0ucbb")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1389262414]
+scale = Vector2(0.19, 0.19)
+texture = ExtResource("2_0ucbb")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1168403821]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=484979852]
+shape = SubResource("CircleShape2D_ix26s")
+
+[connection signal="body_entered" from="Area2D" to="." method="OnPlayerHit"]

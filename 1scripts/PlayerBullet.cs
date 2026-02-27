@@ -5,6 +5,7 @@ namespace Shooter;
 public partial class PlayerBullet : Node2D
 {
     private float _speed = 800f;
+    private Vector2 _direction;
 
     public const float Damage = 10f;
 
@@ -16,25 +17,17 @@ public partial class PlayerBullet : Node2D
 
     private static readonly PackedScene BulletScene = GD.Load<PackedScene>("res://0scenes/player_bullet.tscn");
 
-    public override void _Ready()
-    {
-    }
-
     public override void _PhysicsProcess(double delta)
     {
-        GoUp(delta);
+        GoTowards(delta);
 
         if (Time.GetTicksMsec() > _timeWhenSpawned + TimeToLiveMs)
             QueueFree();
     }
 
-    private void GoUp(double delta)
+    private void GoTowards(double delta)
     {
-        var dir = new Vector2
-        {
-            Y = (float)(-_speed * delta)
-        };
-        Position += dir;
+        Position += _direction * _speed * (float)delta;
     }
 
     public static void AskToSpawn()
@@ -52,6 +45,7 @@ public partial class PlayerBullet : Node2D
         Manager.I.PlayerBullets.AddChild(newBullet);
 
         newBullet.Position = Player.I.Position;
+        newBullet._direction = Vector2.Up;
         newBullet._timeWhenSpawned = Time.GetTicksMsec();
     }
 }

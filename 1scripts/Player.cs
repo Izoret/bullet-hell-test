@@ -35,6 +35,9 @@ public partial class Player : CharacterBody2D
         Camera.I.ApplyNoiseShake(damage > 1000 ? 2 : 1);
         I._hp -= damage;
         UI.UpdateHealthLabel(I._hp);
+        var vfx = Manager.I.VFX.Instantiate<GpuParticles2D>();
+        vfx.GlobalPosition = I.GlobalPosition;
+        I.GetTree().CurrentScene.AddChild(vfx);
         if (I._hp <= 0) I.Die();
     }
 

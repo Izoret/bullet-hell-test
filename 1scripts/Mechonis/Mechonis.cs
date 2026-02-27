@@ -23,11 +23,15 @@ public partial class Mechonis : Area2D
         _stateMachine.Act();
     }
 
+    // physics layers only detect player bullets
     private void OnAreaEntered(Area2D other)
     {
-        // physics layers only detect player bullets
-
         LoseHealth();
+
+        var vfx = Manager.I.VFX.Instantiate<GpuParticles2D>();
+        vfx.GlobalPosition = other.GlobalPosition;
+        GetTree().CurrentScene.AddChild(vfx);
+
         other.GetParent().QueueFree();
     }
 

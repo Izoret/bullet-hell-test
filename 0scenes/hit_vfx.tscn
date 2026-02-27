@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://bicocdss6y4ia"]
+
+[ext_resource type="Script" uid="uid://civ6y5o5iaj4y" path="res://1scripts/HitVfx.cs" id="1_pqjrs"]
+[ext_resource type="Texture2D" uid="uid://bnb6wsqnh3ir6" path="res://2sprites/red-dot.png" id="1_sod27"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_pqjrs"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 20.0
+spread = 180.0
+initial_velocity_min = 23.21
+initial_velocity_max = 23.21
+gravity = Vector3(0, 0, 0)
+
+[node name="HitVfx" type="GPUParticles2D" unique_id=352647998]
+emitting = false
+amount = 100
+texture = ExtResource("1_sod27")
+one_shot = true
+speed_scale = 7.0
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_pqjrs")
+script = ExtResource("1_pqjrs")

@@ -28,6 +28,7 @@ public partial class Mechonis : Area2D
         // physics layers only detect player bullets
 
         LoseHealth();
+        other.GetParent().QueueFree();
     }
 
     private void LoseHealth()
@@ -39,6 +40,7 @@ public partial class Mechonis : Area2D
     private void Die()
     {
         GD.Print("arglas wins!");
+        SpeedrunTimer.StopTimer();
         QueueFree();
     }
 }

@@ -2,7 +2,7 @@ using Godot;
 
 namespace Shooter;
 
-public partial class UI : Control
+public partial class UI : CanvasLayer
 {
     [Export] private Label _healthLabel;
 
@@ -11,6 +11,8 @@ public partial class UI : Control
     public override void _Ready()
     {
         I = this;
+
+        UpdateHealthLabel(Player.I.MaxHp);
     }
 
     public static void UpdateHealthLabel(int hp)

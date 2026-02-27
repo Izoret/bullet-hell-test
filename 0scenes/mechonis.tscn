@@ -13,7 +13,6 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_es7ix")
 Sword = NodePath("Sword")
-_maxHealth = 220.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=698079260]
 position = Vector2(-40.5, -110)
@@ -24,7 +23,7 @@ texture = ExtResource("1_7gj8f")
 
 [node name="Sword" type="Node2D" parent="." unique_id=787385388]
 rotation = -2.57087
-scale = Vector2(1.55, 1.55)
+scale = Vector2(1.615, 1.615)
 script = ExtResource("3_7kb4m")
 
 [node name="RotationPoint" type="Node2D" parent="Sword" unique_id=227125069]

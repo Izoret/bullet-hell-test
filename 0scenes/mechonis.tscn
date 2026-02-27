@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dmqc7vlpx8sn1"]
+
+[ext_resource type="Texture2D" uid="uid://kmjy6i5nt388" path="res://2sprites/mechonis.png" id="1_7gj8f"]
+[ext_resource type="Script" uid="uid://btl7sicen6p27" path="res://1scripts/Mechonis.cs" id="1_es7ix"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7gj8f"]
+size = Vector2(1101, 1102)
+
+[node name="Mechonis" type="Area2D" unique_id=1277802947]
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("1_es7ix")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=698079260]
+position = Vector2(-40.5, -110)
+shape = SubResource("RectangleShape2D_7gj8f")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=933015118]
+texture = ExtResource("1_7gj8f")
+
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]

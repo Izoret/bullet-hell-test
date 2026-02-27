@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cckddee6ekmh6"]
+
+[ext_resource type="Script" uid="uid://cd7bw6vy25bs8" path="res://1scripts/PlayerBullet.cs" id="1_utmwl"]
+[ext_resource type="Texture2D" uid="uid://dqj1v0gaoxqln" path="res://2sprites/gem.png" id="2_oxn87"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ix26s"]
+radius = 163.93
+
+[node name="PlayerBullet" type="Node2D" unique_id=844280356]
+scale = Vector2(0.09, 0.09)
+script = ExtResource("1_utmwl")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1389262414]
+texture = ExtResource("2_oxn87")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1168403821]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=484979852]
+shape = SubResource("CircleShape2D_ix26s")

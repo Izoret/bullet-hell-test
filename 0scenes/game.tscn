@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://bsmlaakn4xk6f"]
+
+[ext_resource type="Script" uid="uid://vvthlxydovya" path="res://1scripts/Manager.cs" id="1_8bds8"]
+[ext_resource type="PackedScene" uid="uid://fu1amsumtj2d" path="res://0scenes/player.tscn" id="1_731xg"]
+[ext_resource type="Texture2D" uid="uid://dlp536optkalk" path="res://2sprites/wallpaper.png" id="2_ggl4w"]
+[ext_resource type="PackedScene" uid="uid://dmqc7vlpx8sn1" path="res://0scenes/mechonis.tscn" id="4_8bds8"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_731xg"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ggl4w"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_tq0pn"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_8bds8"]
+normal = Vector2(0, 1)
+
+[node name="Game" type="Node2D" unique_id=1644692720 node_paths=PackedStringArray("PlayerBullets")]
+script = ExtResource("1_8bds8")
+PlayerBullets = NodePath("PlayerBullets")
+
+[node name="Player" parent="." unique_id=1846487842 instance=ExtResource("1_731xg")]
+position = Vector2(427, 402)
+scale = Vector2(0.4, 0.4)
+
+[node name="Bounds" type="StaticBody2D" parent="." unique_id=86372304]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds" unique_id=635122534]
+position = Vector2(596, 650)
+shape = SubResource("WorldBoundaryShape2D_731xg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds" unique_id=278377943]
+position = Vector2(1, 241)
+shape = SubResource("WorldBoundaryShape2D_ggl4w")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds" unique_id=1192590343]
+position = Vector2(1154, 324)
+shape = SubResource("WorldBoundaryShape2D_tq0pn")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Bounds" unique_id=1484439135]
+position = Vector2(573, 0)
+shape = SubResource("WorldBoundaryShape2D_8bds8")
+
+[node name="Background" type="Sprite2D" parent="." unique_id=487633879]
+z_index = -50
+position = Vector2(573, 325)
+scale = Vector2(0.6105566, 0.6105566)
+texture = ExtResource("2_ggl4w")
+
+[node name="PlayerBullets" type="Node2D" parent="." unique_id=1472892692]
+
+[node name="Mechonis" parent="." unique_id=1330301748 instance=ExtResource("4_8bds8")]
+position = Vector2(580.99994, 98.999985)
+scale = Vector2(0.17, 0.17)

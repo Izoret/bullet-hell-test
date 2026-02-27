@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://dmqc7vlpx8sn1"]
 
 [ext_resource type="Texture2D" uid="uid://kmjy6i5nt388" path="res://2sprites/mechonis.png" id="1_7gj8f"]
-[ext_resource type="Script" uid="uid://btl7sicen6p27" path="res://1scripts/Mechonis.cs" id="1_es7ix"]
+[ext_resource type="Script" uid="uid://btl7sicen6p27" path="res://1scripts/Mechonis/Mechonis.cs" id="1_es7ix"]
+[ext_resource type="Texture2D" uid="uid://cvaecfemgxahn" path="res://2sprites/mechonis_sword.png" id="3_88kho"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7gj8f"]
 size = Vector2(1101, 1102)
 
-[node name="Mechonis" type="Area2D" unique_id=1277802947]
+[node name="Mechonis" type="Area2D" unique_id=1277802947 node_paths=PackedStringArray("Sword")]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_es7ix")
+Sword = NodePath("Sword")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=698079260]
 position = Vector2(-40.5, -110)
@@ -18,4 +20,24 @@ shape = SubResource("RectangleShape2D_7gj8f")
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=933015118]
 texture = ExtResource("1_7gj8f")
 
+[node name="Sword" type="Node2D" parent="." unique_id=787385388]
+rotation = -2.57087
+scale = Vector2(1.55, 1.55)
+
+[node name="RotationPoint" type="Node2D" parent="Sword" unique_id=227125069]
+position = Vector2(877.4193, 207.74193)
+
+[node name="Sprite2D" type="Sprite2D" parent="Sword/RotationPoint" unique_id=1574413040]
+scale = Vector2(0.99999994, 0.99999994)
+texture = ExtResource("3_88kho")
+
+[node name="Area2D" type="Area2D" parent="Sword/RotationPoint" unique_id=1958573987]
+scale = Vector2(0.99999994, 0.99999994)
+collision_layer = 8
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Sword/RotationPoint/Area2D" unique_id=18154520]
+position = Vector2(-14, 19)
+polygon = PackedVector2Array(-863, -223, 505, 300, 580, 218, 880, 277, 748, 60)
+
 [connection signal="area_entered" from="." to="." method="OnAreaEntered"]
+[connection signal="body_entered" from="Sword/RotationPoint/Area2D" to="." method="OnPlayerEnteredSword"]

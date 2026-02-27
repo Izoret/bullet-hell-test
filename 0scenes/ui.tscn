@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://caw6lwoq0ssn2"]
+
+[ext_resource type="Script" uid="uid://dyeta2hjec0ny" path="res://1scripts/UI.cs" id="1_eyoek"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_3k7lv"]
+font_size = 24
+outline_size = 4
+outline_color = Color(0, 0, 0, 1)
+
+[node name="UI" type="Control" unique_id=1131069504 node_paths=PackedStringArray("_healthLabel")]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_eyoek")
+_healthLabel = NodePath("Health")
+
+[node name="Health" type="Label" parent="." unique_id=1357903244]
+layout_mode = 0
+offset_left = -568.0
+offset_top = -242.0
+offset_right = -449.0
+offset_bottom = -208.0
+text = "HP : pl/mx"
+label_settings = SubResource("LabelSettings_3k7lv")

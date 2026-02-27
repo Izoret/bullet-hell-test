@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dlp536optkalk" path="res://2sprites/wallpaper.png" id="2_ggl4w"]
 [ext_resource type="PackedScene" uid="uid://dmqc7vlpx8sn1" path="res://0scenes/mechonis.tscn" id="4_8bds8"]
 [ext_resource type="Script" uid="uid://bw7yqujtuqdhu" path="res://1scripts/Camera.cs" id="5_xfhdr"]
+[ext_resource type="PackedScene" uid="uid://caw6lwoq0ssn2" path="res://0scenes/ui.tscn" id="6_y70tf"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_731xg"]
 
@@ -48,6 +49,7 @@ shape = SubResource("WorldBoundaryShape2D_8bds8")
 
 [node name="Background" type="Sprite2D" parent="." unique_id=487633879]
 z_index = -50
+position = Vector2(7, 0)
 scale = Vector2(0.6105566, 0.6105566)
 texture = ExtResource("2_ggl4w")
 
@@ -64,5 +66,7 @@ scale = Vector2(0.17, 0.17)
 [node name="Camera2D" type="Camera2D" parent="." unique_id=842311343]
 script = ExtResource("5_xfhdr")
 NoiseShakeSpeed = 60.0
-NoiseShakeStrength = 17.0
+NoiseShakeStrength = 15.5
 ShakeDecayRate = 8.0
+
+[node name="UI" parent="." unique_id=1131069504 instance=ExtResource("6_y70tf")]

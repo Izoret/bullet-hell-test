@@ -6,8 +6,9 @@ public partial class EnemyBullet : Node2D
 {
     private float _speed = 600f;
     private Vector2 _direction;
+    private int _damage = 702;
 
-    private const float TimeToLiveMs = 1000f;
+    private const float TimeToLiveMs = 1500f;
     private float _timeWhenSpawned;
 
     private static readonly PackedScene BulletScene = GD.Load<PackedScene>("res://0scenes/enemy_bullet.tscn");
@@ -27,7 +28,7 @@ public partial class EnemyBullet : Node2D
 
     private void OnPlayerHit(Node2D other)
     {
-        Player.I.GetHit();
+        Player.Hit(_damage);
         QueueFree();
     }
 

@@ -1,38 +1,38 @@
-using System;
 using Godot;
 
-namespace Shooter;
+namespace Shooter.Mechonis;
 
 public partial class Mechonis : Area2D
 {
+    [Export] public Node2D Sword;
+
     [Export] private float _maxHealth = 100f;
     private float _currentHealth;
 
-    private const float ShootingCooldownMs = 200f;
-    private static float _lastShootTimeStamp;
+    private MechonisPatternHandler _stateMachine;
 
     public override void _Ready()
     {
+        _stateMachine = new MechonisPatternHandler(this);
+
         _currentHealth = _maxHealth;
     }
 
     public override void _Process(double delta)
     {
-        if (_lastShootTimeStamp + ShootingCooldownMs > Time.GetTicksMsec()) return;
-
-        var towards = new Vector2(Player.I.Position.X - Position.X, Player.I.Position.Y - Position.Y);
-        EnemyBullet.SpawnOne(Position, towards);
-
-        _lastShootTimeStamp = Time.GetTicksMsec();
+        _stateMachine.Act();
     }
 
     private void OnAreaEntered(Area2D other)
     {
         // physics layers only detect player bullets
 
-        GD.Print("smth entered");
-
         LoseHealth();
+    }
+
+    private void OnPlayerEnteredSword(Node2D other)
+    {
+        GD.Print("OUCH");
     }
 
     private void LoseHealth()

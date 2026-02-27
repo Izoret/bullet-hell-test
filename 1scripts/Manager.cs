@@ -15,9 +15,9 @@ public partial class Manager : Node2D
 
 	public override void _Process(double delta)
 	{
-		Vector2 dir = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
-		Player.I.SetDirection(dir);
+		Vector2 dir = Input.GetVector("Left", "Right", "Up", "Down");
+		Player.SetDirection(dir);
 		
-		if (Input.IsActionPressed("ui_accept")) PlayerBullet.AskToSpawn();
+		if (Input.IsActionPressed("Space")) PlayerBullet.AskToSpawn();
 	}
 }

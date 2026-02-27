@@ -2,16 +2,12 @@ using Godot;
 
 namespace Shooter.Mechonis;
 
-public class MechonisShoot(
-    Mechonis mechonis,
-    float duration,
-    float bulletSizeMul = 1,
-    int cooldownMs = 200
-    ) : MechonisPattern(mechonis, duration)
+public class MechonisPatternDurationShoot(float duration, float bulletSizeMul = 1, int cooldownMs = 200)
+    : MechonisPatternDuration(duration)
 {
-    private static float _lastShootTimeStamp;
+    private float _lastShootTimeStamp;
 
-    public override void Trigger()
+    protected override void TriggerAction()
     {
         if (_lastShootTimeStamp + cooldownMs > Time.GetTicksMsec()) return;
 

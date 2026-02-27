@@ -22,8 +22,9 @@ shape = SubResource("RectangleShape2D_7gj8f")
 texture = ExtResource("1_7gj8f")
 
 [node name="Sword" type="Node2D" parent="." unique_id=787385388]
-rotation = -2.57087
-scale = Vector2(1.615, 1.615)
+position = Vector2(0.9999999, -155)
+rotation = 3.6320302
+scale = Vector2(1.25, 1.25)
 script = ExtResource("3_7kb4m")
 
 [node name="RotationPoint" type="Node2D" parent="Sword" unique_id=227125069]

@@ -4,11 +4,11 @@ namespace Shooter;
 
 public partial class EnemyBullet : Node2D
 {
-    private float _speed = 600f;
+    private float _speed = 550f;
     private Vector2 _direction;
     private int _damage = 702;
 
-    private const float TimeToLiveMs = 1500f;
+    private const float TimeToLiveMs = 2000f;
     private float _timeWhenSpawned;
 
     private static readonly PackedScene BulletScene = GD.Load<PackedScene>("res://0scenes/enemy_bullet.tscn");

@@ -9,16 +9,16 @@ public partial class Mechonis : Area2D
     [Export] private float _maxHealth = 100f;
     private float _currentHealth;
 
-    private MechonisPatternHandler _stateMachine;
+    private PatternsHandler _stateMachine;
 
     public override void _Ready()
     {
-        _stateMachine = new MechonisPatternHandler(this);
+        _stateMachine = new PatternsHandler(this);
 
         _currentHealth = _maxHealth;
     }
 
-    public override void _Process(double delta)
+    public override void _PhysicsProcess(double delta)
     {
         _stateMachine.Act();
     }
@@ -43,8 +43,6 @@ public partial class Mechonis : Area2D
 
     private void Die()
     {
-        GD.Print("arglas wins!");
-        SpeedrunTimer.StopTimer();
         QueueFree();
     }
 }

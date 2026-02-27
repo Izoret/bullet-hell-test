@@ -7,6 +7,7 @@ public partial class Manager : Node2D
     [Export] public Node PlayerBullets;
     [Export] public Node EnemyBullets;
     [Export] public PackedScene VFX;
+    [Export] public Node Enemies;
 
     public static Manager I;
 
@@ -21,5 +22,16 @@ public partial class Manager : Node2D
         Player.SetDirection(dir);
 
         if (Input.IsActionPressed("Space")) PlayerBullet.AskToSpawn();
+
+        HandleGameWin();
+    }
+
+    private void HandleGameWin()
+    {
+        if (Enemies.GetChildCount() == 0)
+        {
+            GD.Print("arglas wins!");
+            SpeedrunTimer.StopTimer();
+        }
     }
 }

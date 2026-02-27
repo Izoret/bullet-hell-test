@@ -1,11 +1,11 @@
 namespace Shooter.Mechonis;
 
-public abstract class MechonisPattern(Mechonis mechonis, float duration)
+public abstract class MechonisPattern
 {
-    protected readonly Mechonis Mechonis = mechonis;
+    public Mechonis Mechonis;
 
-    public readonly float Duration = duration;
     public MechonisPattern Next;
 
     public abstract void Trigger();
+    public abstract bool Finished();
 }
